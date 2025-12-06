@@ -1,3 +1,4 @@
+
 ############################
 # Terraform & Provider
 ############################
@@ -32,17 +33,6 @@ variable "lambda_version" {
 variable "lambda_bucket_name" {
   type    = string
   default = "raj-serverless-lambda-artifacts-jenkins-01"
-}
-
-############################
-# S3 bucket for Lambda artifacts
-############################
-resource "aws_s3_bucket" "lambda_bucket" {
-  bucket = var.lambda_bucket_name
-
-  tags = {
-    Name = "lambda-artifacts-jenkins"
-  }
 }
 
 ############################
@@ -126,10 +116,10 @@ resource "aws_lambda_function" "api" {
   runtime       = "python3.12"
   handler       = "lambda_function.lambda_handler"
 
-  s3_bucket = aws_s3_bucket.lambda_bucket.bucket
+  # existing S3 bucket वापरतो
+  s3_bucket = var.lambda_bucket_name
   s3_key    = "lambda.zip"
 
-  # Jenkins मधून बदलणारा version (code change ओळखायला)
   source_code_hash = base64sha256(var.lambda_version)
 
   environment {
@@ -141,7 +131,6 @@ resource "aws_lambda_function" "api" {
   timeout = 10
 
   depends_on = [
-    aws_s3_bucket.lambda_bucket,
     aws_iam_role_policy_attachment.lambda_policy_attach
   ]
 }
