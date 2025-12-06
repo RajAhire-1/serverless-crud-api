@@ -1,5 +1,5 @@
 ############################
-# Provider & basic setup
+# Terraform & Provider
 ############################
 terraform {
   required_version = ">= 1.3.0"
@@ -22,7 +22,7 @@ variable "aws_region" {
 }
 
 ############################
-# Variables for Lambda
+# Variables
 ############################
 variable "lambda_version" {
   type    = string
@@ -31,7 +31,7 @@ variable "lambda_version" {
 
 variable "lambda_bucket_name" {
   type    = string
-  default = "raj-serverless-lambda-artifacts-987654"
+  default = "raj-serverless-lambda-artifacts-jenkins-01"
 }
 
 ############################
@@ -41,7 +41,7 @@ resource "aws_s3_bucket" "lambda_bucket" {
   bucket = var.lambda_bucket_name
 
   tags = {
-    Name = "lambda-artifacts"
+    Name = "lambda-artifacts-jenkins"
   }
 }
 
@@ -49,7 +49,7 @@ resource "aws_s3_bucket" "lambda_bucket" {
 # DynamoDB Table
 ############################
 resource "aws_dynamodb_table" "items" {
-  name         = "serverless_items"
+  name         = "serverless_items_jenkins"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "id"
 
@@ -59,7 +59,7 @@ resource "aws_dynamodb_table" "items" {
   }
 
   tags = {
-    Name = "serverless_items"
+    Name = "serverless_items_jenkins"
   }
 }
 
@@ -67,7 +67,7 @@ resource "aws_dynamodb_table" "items" {
 # IAM Role & Policy for Lambda
 ############################
 resource "aws_iam_role" "lambda_role" {
-  name = "serverless-crud-lambda-role"
+  name = "serverless-crud-lambda-role-jenkins"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -84,7 +84,7 @@ resource "aws_iam_role" "lambda_role" {
 }
 
 resource "aws_iam_policy" "lambda_policy" {
-  name = "serverless-crud-lambda-policy"
+  name = "serverless-crud-lambda-policy-jenkins"
 
   policy = jsonencode({
     Version = "2012-10-17",
@@ -121,7 +121,7 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attach" {
 # Lambda Function
 ############################
 resource "aws_lambda_function" "api" {
-  function_name = "serverless-crud-api"
+  function_name = "serverless-crud-api-jenkins"
   role          = aws_iam_role.lambda_role.arn
   runtime       = "python3.12"
   handler       = "lambda_function.lambda_handler"
@@ -129,6 +129,7 @@ resource "aws_lambda_function" "api" {
   s3_bucket = aws_s3_bucket.lambda_bucket.bucket
   s3_key    = "lambda.zip"
 
+  # Jenkins मधून बदलणारा version (code change ओळखायला)
   source_code_hash = base64sha256(var.lambda_version)
 
   environment {
@@ -157,8 +158,8 @@ resource "aws_cloudwatch_log_group" "lambda_logs" {
 # API Gateway - REST API
 ############################
 resource "aws_api_gateway_rest_api" "api" {
-  name        = "serverless-crud-api"
-  description = "CRUD API via Lambda and DynamoDB"
+  name        = "serverless-crud-api-jenkins"
+  description = "CRUD API via Lambda and DynamoDB (Jenkins managed)"
 }
 
 # /items
@@ -175,7 +176,9 @@ resource "aws_api_gateway_resource" "item" {
   path_part   = "{id}"
 }
 
+############################
 # Methods
+############################
 resource "aws_api_gateway_method" "get_items" {
   rest_api_id   = aws_api_gateway_rest_api.api.id
   resource_id   = aws_api_gateway_resource.items.id
@@ -211,7 +214,9 @@ resource "aws_api_gateway_method" "delete_item" {
   authorization = "NONE"
 }
 
+############################
 # Integrations (Lambda proxy)
+############################
 locals {
   lambda_uri = "arn:aws:apigateway:${var.aws_region}:lambda:path/2015-03-31/functions/${aws_lambda_function.api.arn}/invocations"
 }
@@ -266,6 +271,7 @@ resource "aws_api_gateway_integration" "delete_item_integration" {
 ############################
 resource "aws_api_gateway_deployment" "api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.api.id
+
   depends_on = [
     aws_api_gateway_integration.get_items_integration,
     aws_api_gateway_integration.post_item_integration,

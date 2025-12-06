@@ -3,10 +3,11 @@ pipeline {
 
     environment {
         AWS_REGION    = "ap-south-1"
-        LAMBDA_BUCKET = "raj-serverless-lambda-artifacts-987654"
+        LAMBDA_BUCKET = "raj-serverless-lambda-artifacts-jenkins-01"
     }
 
     triggers {
+        // GitHub webhook वापरणार, pollSCM रिकामा ठेवला आहे
         pollSCM('')
     }
 

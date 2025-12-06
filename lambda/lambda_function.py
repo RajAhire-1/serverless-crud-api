@@ -5,14 +5,13 @@ from boto3.dynamodb.conditions import Key
 from decimal import Decimal
 
 dynamodb = boto3.resource("dynamodb")
-TABLE_NAME = os.environ.get("TABLE_NAME", "serverless_items")
+TABLE_NAME = os.environ.get("TABLE_NAME", "serverless_items_jenkins")
 table = dynamodb.Table(TABLE_NAME)
 
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, Decimal):
-            # जर पूर्णांक असेल तर int, नाहीतर float
             if o % 1 == 0:
                 return int(o)
             else:
@@ -36,6 +35,8 @@ def lambda_handler(event, context):
     path = event.get("path", "")
     path_params = event.get("pathParameters") or {}
     query_params = event.get("queryStringParameters") or {}
+
+    print("Event received:", event)
 
     try:
         if http_method == "GET":
@@ -106,4 +107,6 @@ def delete_item(item_id):
         return response(400, {"message": "id is required in path"})
     table.delete_item(Key={"id": item_id})
     return response(204, {})
-print("Auto deploy test")
+
+
+print("Auto deploy test from Jenkins")
