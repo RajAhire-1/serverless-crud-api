@@ -1,4 +1,3 @@
-
 ############################
 # Terraform & Provider
 ############################
@@ -38,8 +37,10 @@ variable "lambda_bucket_name" {
 ############################
 # DynamoDB Table
 ############################
+# इथे जुनं नाव होतं: serverless_items_jenkins
+# आता नवीन unique नाव देतो: serverless_items_jenkins_ci01
 resource "aws_dynamodb_table" "items" {
-  name         = "serverless_items_jenkins"
+  name         = "serverless_items_jenkins_ci01"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "id"
 
@@ -49,15 +50,17 @@ resource "aws_dynamodb_table" "items" {
   }
 
   tags = {
-    Name = "serverless_items_jenkins"
+    Name = "serverless_items_jenkins_ci01"
   }
 }
 
 ############################
 # IAM Role & Policy for Lambda
 ############################
+# जुनं role नाव: serverless-crud-lambda-role-jenkins
+# नवीन: serverless-crud-lambda-role-jenkins-ci01
 resource "aws_iam_role" "lambda_role" {
-  name = "serverless-crud-lambda-role-jenkins"
+  name = "serverless-crud-lambda-role-jenkins-ci01"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -73,8 +76,10 @@ resource "aws_iam_role" "lambda_role" {
   })
 }
 
+# जुनं policy नाव: serverless-crud-lambda-policy-jenkins
+# नवीन: serverless-crud-lambda-policy-jenkins-ci01
 resource "aws_iam_policy" "lambda_policy" {
-  name = "serverless-crud-lambda-policy-jenkins"
+  name = "serverless-crud-lambda-policy-jenkins-ci01"
 
   policy = jsonencode({
     Version = "2012-10-17",
@@ -110,8 +115,10 @@ resource "aws_iam_role_policy_attachment" "lambda_policy_attach" {
 ############################
 # Lambda Function
 ############################
+# जुनं नाव: serverless-crud-api-jenkins
+# नवीन: serverless-crud-api-jenkins-ci01
 resource "aws_lambda_function" "api" {
-  function_name = "serverless-crud-api-jenkins"
+  function_name = "serverless-crud-api-jenkins-ci01"
   role          = aws_iam_role.lambda_role.arn
   runtime       = "python3.12"
   handler       = "lambda_function.lambda_handler"
@@ -120,6 +127,7 @@ resource "aws_lambda_function" "api" {
   s3_bucket = var.lambda_bucket_name
   s3_key    = "lambda.zip"
 
+  # Jenkins मधून येणारा BUILD_NUMBER इथे hash साठी वापरतो
   source_code_hash = base64sha256(var.lambda_version)
 
   environment {
@@ -147,8 +155,8 @@ resource "aws_cloudwatch_log_group" "lambda_logs" {
 # API Gateway - REST API
 ############################
 resource "aws_api_gateway_rest_api" "api" {
-  name        = "serverless-crud-api-jenkins"
-  description = "CRUD API via Lambda and DynamoDB (Jenkins managed)"
+  name        = "serverless-crud-api-jenkins-ci01"
+  description = "CRUD API via Lambda and DynamoDB (Jenkins managed CI01)"
 }
 
 # /items
