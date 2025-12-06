@@ -1,0 +1,15 @@
+# Terraform local files
+.terraform/
+terraform/.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+crash.log
+
+# AWS CLI / zip artifacts
+awscliv2.zip
+aws/
+lambda.zip
+
+# Python cache
+__pycache__/
+*.pyc

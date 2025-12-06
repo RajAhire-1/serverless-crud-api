@@ -1,0 +1,72 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_REGION    = "ap-south-1"
+        LAMBDA_BUCKET = "raj-serverless-lambda-artifacts-987654"
+    }
+
+    triggers {
+        pollSCM('')
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Zip Lambda') {
+            steps {
+                dir('lambda') {
+                    sh 'zip -r ../lambda.zip .'
+                }
+            }
+        }
+
+        stage('Upload to S3') {
+            steps {
+                sh '''
+                aws s3 cp lambda.zip s3://$LAMBDA_BUCKET/lambda.zip --region $AWS_REGION
+                '''
+            }
+        }
+
+        stage('Terraform Init') {
+            steps {
+                dir('terraform') {
+                    sh 'terraform init'
+                }
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                dir('terraform') {
+                    sh '''
+                    terraform apply -auto-approve \
+                      -var="aws_region=$AWS_REGION" \
+                      -var="lambda_version=${BUILD_NUMBER}" \
+                      -var="lambda_bucket_name=$LAMBDA_BUCKET"
+                    '''
+                }
+            }
+        }
+
+        stage('Test API with curl') {
+            steps {
+                dir('terraform') {
+                    script {
+                        def apiUrl = sh(
+                            script: "terraform output -raw api_url",
+                            returnStdout: true
+                        ).trim()
+                        echo "API URL = ${apiUrl}"
+                        sh "curl -s ${apiUrl}/items"
+                    }
+                }
+            }
+        }
+    }
+}
