@@ -65,12 +65,12 @@ serverless-crud-api/
 # 🧱 Infrastructure Screenshots
 
 ## ✅ API Gateway Resources
-![API Gateway](img/api_gateway.png)
+![API Gateway](img/api_gatway.png)
 
 ---
 
 ## ✅ Jenkins CI/CD – Successful Pipeline
-![Jenkins Success](img/jenkins_success.png)
+![Jenkins Success](img/build_success.png)
 
 ---
 
@@ -80,12 +80,12 @@ serverless-crud-api/
 ---
 
 ## ✅ AWS Lambda Function
-![Lambda](img/lambda.png)
+![Lambda](img/lambda_fuction.png)
 
 ---
 
 ## ✅ Jenkins EC2 Server (AWS)
-![EC2 Jenkins](img/ec2_jenkins.png)
+![EC2 Jenkins](img/jenkins_server.png)
 
 ---
 
