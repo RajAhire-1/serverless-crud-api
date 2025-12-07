@@ -1,0 +1,1005 @@
+{
+  "version": 4,
+  "terraform_version": "1.13.5",
+  "serial": 54,
+  "lineage": "70e60e1a-7d84-cac0-22f7-234c1095b5b7",
+  "outputs": {
+    "api_url": {
+      "value": "https://3z36i90j12.execute-api.ap-south-1.amazonaws.com/dev",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_deployment",
+      "name": "api_deployment",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "canary_settings": [],
+            "created_date": "2025-12-06T18:57:57Z",
+            "description": "",
+            "execution_arn": "arn:aws:execute-api:ap-south-1:959786390482:3z36i90j12/",
+            "id": "8ix376",
+            "invoke_url": "https://3z36i90j12.execute-api.ap-south-1.amazonaws.com/",
+            "rest_api_id": "3z36i90j12",
+            "stage_description": null,
+            "stage_name": null,
+            "triggers": null,
+            "variables": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_integration.delete_item_integration",
+            "aws_api_gateway_integration.get_item_integration",
+            "aws_api_gateway_integration.get_items_integration",
+            "aws_api_gateway_integration.post_item_integration",
+            "aws_api_gateway_integration.put_item_integration",
+            "aws_api_gateway_method.delete_item",
+            "aws_api_gateway_method.get_item",
+            "aws_api_gateway_method.get_items",
+            "aws_api_gateway_method.post_item",
+            "aws_api_gateway_method.put_item",
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "delete_item_integration",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "gj8p6g",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "DELETE",
+            "id": "agi-3z36i90j12-gj8p6g-DELETE",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "gj8p6g",
+            "rest_api_id": "3z36i90j12",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:ap-south-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.delete_item",
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "get_item_integration",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "gj8p6g",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "GET",
+            "id": "agi-3z36i90j12-gj8p6g-GET",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "gj8p6g",
+            "rest_api_id": "3z36i90j12",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:ap-south-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.get_item",
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "get_items_integration",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "dbsjeq",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "GET",
+            "id": "agi-3z36i90j12-dbsjeq-GET",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "dbsjeq",
+            "rest_api_id": "3z36i90j12",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:ap-south-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.get_items",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "post_item_integration",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "dbsjeq",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "POST",
+            "id": "agi-3z36i90j12-dbsjeq-POST",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "dbsjeq",
+            "rest_api_id": "3z36i90j12",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:ap-south-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.post_item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_integration",
+      "name": "put_item_integration",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "cache_key_parameters": [],
+            "cache_namespace": "gj8p6g",
+            "connection_id": "",
+            "connection_type": "INTERNET",
+            "content_handling": "",
+            "credentials": "",
+            "http_method": "PUT",
+            "id": "agi-3z36i90j12-gj8p6g-PUT",
+            "integration_http_method": "POST",
+            "passthrough_behavior": "WHEN_NO_MATCH",
+            "request_parameters": {},
+            "request_templates": {},
+            "resource_id": "gj8p6g",
+            "rest_api_id": "3z36i90j12",
+            "timeout_milliseconds": 29000,
+            "tls_config": [],
+            "type": "AWS_PROXY",
+            "uri": "arn:aws:apigateway:ap-south-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins/invocations"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_method.put_item",
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "delete_item",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "DELETE",
+            "id": "agm-3z36i90j12-gj8p6g-DELETE",
+            "operation_name": "",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "gj8p6g",
+            "rest_api_id": "3z36i90j12"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "get_item",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "GET",
+            "id": "agm-3z36i90j12-gj8p6g-GET",
+            "operation_name": "",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "gj8p6g",
+            "rest_api_id": "3z36i90j12"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "get_items",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "GET",
+            "id": "agm-3z36i90j12-dbsjeq-GET",
+            "operation_name": "",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "dbsjeq",
+            "rest_api_id": "3z36i90j12"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "post_item",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "POST",
+            "id": "agm-3z36i90j12-dbsjeq-POST",
+            "operation_name": "",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "dbsjeq",
+            "rest_api_id": "3z36i90j12"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_method",
+      "name": "put_item",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_required": false,
+            "authorization": "NONE",
+            "authorization_scopes": [],
+            "authorizer_id": "",
+            "http_method": "PUT",
+            "id": "agm-3z36i90j12-gj8p6g-PUT",
+            "operation_name": "",
+            "request_models": {},
+            "request_parameters": {},
+            "request_validator_id": "",
+            "resource_id": "gj8p6g",
+            "rest_api_id": "3z36i90j12"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "item",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "gj8p6g",
+            "parent_id": "dbsjeq",
+            "path": "/items/{id}",
+            "path_part": "{id}",
+            "rest_api_id": "3z36i90j12"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_resource",
+      "name": "items",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "dbsjeq",
+            "parent_id": "7dk5vuodqb",
+            "path": "/items",
+            "path_part": "items",
+            "rest_api_id": "3z36i90j12"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.api"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_rest_api",
+      "name": "api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "api_key_source": "HEADER",
+            "arn": "arn:aws:apigateway:ap-south-1::/restapis/3z36i90j12",
+            "binary_media_types": [],
+            "body": null,
+            "created_date": "2025-12-06T18:52:20Z",
+            "description": "CRUD API via Lambda and DynamoDB (Jenkins managed)",
+            "disable_execute_api_endpoint": false,
+            "endpoint_configuration": [
+              {
+                "ip_address_type": "ipv4",
+                "types": [
+                  "EDGE"
+                ],
+                "vpc_endpoint_ids": []
+              }
+            ],
+            "execution_arn": "arn:aws:execute-api:ap-south-1:959786390482:3z36i90j12",
+            "fail_on_warnings": null,
+            "id": "3z36i90j12",
+            "minimum_compression_size": "",
+            "name": "serverless-crud-api-jenkins",
+            "parameters": null,
+            "policy": "",
+            "put_rest_api_mode": null,
+            "root_resource_id": "7dk5vuodqb",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_api_gateway_stage",
+      "name": "stage",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "access_log_settings": [],
+            "arn": "arn:aws:apigateway:ap-south-1::/restapis/3z36i90j12/stages/dev",
+            "cache_cluster_enabled": false,
+            "cache_cluster_size": "",
+            "canary_settings": [],
+            "client_certificate_id": "",
+            "deployment_id": "8ix376",
+            "description": "",
+            "documentation_version": "",
+            "execution_arn": "arn:aws:execute-api:ap-south-1:959786390482:3z36i90j12/dev",
+            "id": "ags-3z36i90j12-dev",
+            "invoke_url": "https://3z36i90j12.execute-api.ap-south-1.amazonaws.com/dev",
+            "rest_api_id": "3z36i90j12",
+            "stage_name": "dev",
+            "tags": {},
+            "tags_all": {},
+            "variables": {},
+            "web_acl_arn": "",
+            "xray_tracing_enabled": false
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_deployment.api_deployment",
+            "aws_api_gateway_integration.delete_item_integration",
+            "aws_api_gateway_integration.get_item_integration",
+            "aws_api_gateway_integration.get_items_integration",
+            "aws_api_gateway_integration.post_item_integration",
+            "aws_api_gateway_integration.put_item_integration",
+            "aws_api_gateway_method.delete_item",
+            "aws_api_gateway_method.get_item",
+            "aws_api_gateway_method.get_items",
+            "aws_api_gateway_method.post_item",
+            "aws_api_gateway_method.put_item",
+            "aws_api_gateway_resource.item",
+            "aws_api_gateway_resource.items",
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "lambda_logs",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:ap-south-1:959786390482:log-group:/aws/lambda/serverless-crud-api-jenkins",
+            "id": "/aws/lambda/serverless-crud-api-jenkins",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "/aws/lambda/serverless-crud-api-jenkins",
+            "name_prefix": "",
+            "retention_in_days": 7,
+            "skip_destroy": false,
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_dynamodb_table",
+      "name": "items",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "arn": "arn:aws:dynamodb:ap-south-1:959786390482:table/serverless_items_jenkins",
+            "attribute": [
+              {
+                "name": "id",
+                "type": "S"
+              }
+            ],
+            "billing_mode": "PAY_PER_REQUEST",
+            "deletion_protection_enabled": false,
+            "global_secondary_index": [],
+            "hash_key": "id",
+            "id": "serverless_items_jenkins",
+            "import_table": [],
+            "local_secondary_index": [],
+            "name": "serverless_items_jenkins",
+            "on_demand_throughput": [],
+            "point_in_time_recovery": [
+              {
+                "enabled": false,
+                "recovery_period_in_days": 0
+              }
+            ],
+            "range_key": null,
+            "read_capacity": 0,
+            "replica": [],
+            "restore_date_time": null,
+            "restore_source_name": null,
+            "restore_source_table_arn": null,
+            "restore_to_latest_time": null,
+            "server_side_encryption": [],
+            "stream_arn": "",
+            "stream_enabled": false,
+            "stream_label": "",
+            "stream_view_type": "",
+            "table_class": "STANDARD",
+            "tags": {
+              "Name": "serverless_items_jenkins"
+            },
+            "tags_all": {
+              "Name": "serverless_items_jenkins"
+            },
+            "timeouts": null,
+            "ttl": [
+              {
+                "attribute_name": "",
+                "enabled": false
+              }
+            ],
+            "write_capacity": 0
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjozNjAwMDAwMDAwMDAwfSwic2NoZW1hX3ZlcnNpb24iOiIxIn0=",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_policy",
+      "name": "lambda_policy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::959786390482:policy/serverless-crud-lambda-policy-jenkins",
+            "attachment_count": 1,
+            "description": "",
+            "id": "arn:aws:iam::959786390482:policy/serverless-crud-lambda-policy-jenkins",
+            "name": "serverless-crud-lambda-policy-jenkins",
+            "name_prefix": "",
+            "path": "/",
+            "policy": "{\"Statement\":[{\"Action\":[\"logs:CreateLogGroup\",\"logs:CreateLogStream\",\"logs:PutLogEvents\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:logs:*:*:*\"},{\"Action\":[\"dynamodb:PutItem\",\"dynamodb:GetItem\",\"dynamodb:DeleteItem\",\"dynamodb:Scan\"],\"Effect\":\"Allow\",\"Resource\":\"arn:aws:dynamodb:ap-south-1:959786390482:table/serverless_items_jenkins\"}],\"Version\":\"2012-10-17\"}",
+            "policy_id": "ANPA56552CPJFVURTM2BX",
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.items"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "lambda_role",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::959786390482:role/serverless-crud-lambda-role-jenkins",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-12-06T20:39:39Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "serverless-crud-lambda-role-jenkins",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::959786390482:policy/serverless-crud-lambda-policy-jenkins"
+            ],
+            "max_session_duration": 3600,
+            "name": "serverless-crud-lambda-role-jenkins",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROA56552CPJHL3PZAG4G"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "lambda_policy_attach",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "serverless-crud-lambda-role-jenkins-20251206203947822000000001",
+            "policy_arn": "arn:aws:iam::959786390482:policy/serverless-crud-lambda-policy-jenkins",
+            "role": "serverless-crud-lambda-role-jenkins"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins",
+            "code_sha256": "CI4ZdgyCZ9gIy5WyP7AWkH6Zw02XhnKy54Sr4YAIsvw=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "TABLE_NAME": "serverless_items_jenkins"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": null,
+            "function_name": "serverless-crud-api-jenkins",
+            "handler": "lambda_function.lambda_handler",
+            "id": "serverless-crud-api-jenkins",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:ap-south-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-12-06T20:46:48.172+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/serverless-crud-api-jenkins",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:ap-south-1:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-south-1:959786390482:function:serverless-crud-api-jenkins:$LATEST/invocations",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::959786390482:role/serverless-crud-lambda-role-jenkins",
+            "runtime": "python3.12",
+            "s3_bucket": "raj-serverless-lambda-artifacts-jenkins-01",
+            "s3_key": "lambda.zip",
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "a4ayc/80/OGda4BO/1o/V0etpOqiLx1JwB5S3beHW0s=",
+            "source_code_size": 1194,
+            "tags": {},
+            "tags_all": {},
+            "timeout": 10,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach"
+          ],
+          "create_before_destroy": true
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "apigw",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "serverless-crud-api-jenkins",
+            "function_url_auth_type": null,
+            "id": "AllowAPIGatewayInvoke",
+            "principal": "apigateway.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "source_account": null,
+            "source_arn": "arn:aws:execute-api:ap-south-1:959786390482:3z36i90j12/*/*",
+            "statement_id": "AllowAPIGatewayInvoke",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_api_gateway_rest_api.api",
+            "aws_dynamodb_table.items",
+            "aws_iam_policy.lambda_policy",
+            "aws_iam_role.lambda_role",
+            "aws_iam_role_policy_attachment.lambda_policy_attach",
+            "aws_lambda_function.api"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_s3_bucket",
+      "name": "lambda_bucket",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "acceleration_status": "",
+            "acl": null,
+            "arn": "arn:aws:s3:::raj-serverless-lambda-artifacts-987654",
+            "bucket": "raj-serverless-lambda-artifacts-987654",
+            "bucket_domain_name": "raj-serverless-lambda-artifacts-987654.s3.amazonaws.com",
+            "bucket_prefix": "",
+            "bucket_regional_domain_name": "raj-serverless-lambda-artifacts-987654.s3.ap-south-1.amazonaws.com",
+            "cors_rule": [],
+            "force_destroy": false,
+            "grant": [
+              {
+                "id": "6de315539367d90b347478d25f69281296c673ca50044b32e62c9cbbd82024f1",
+                "permissions": [
+                  "FULL_CONTROL"
+                ],
+                "type": "CanonicalUser",
+                "uri": ""
+              }
+            ],
+            "hosted_zone_id": "Z11RGJOFQNVJUP",
+            "id": "raj-serverless-lambda-artifacts-987654",
+            "lifecycle_rule": [],
+            "logging": [],
+            "object_lock_configuration": [],
+            "object_lock_enabled": false,
+            "policy": "",
+            "region": "ap-south-1",
+            "replication_configuration": [],
+            "request_payer": "BucketOwner",
+            "server_side_encryption_configuration": [
+              {
+                "rule": [
+                  {
+                    "apply_server_side_encryption_by_default": [
+                      {
+                        "kms_master_key_id": "",
+                        "sse_algorithm": "AES256"
+                      }
+                    ],
+                    "bucket_key_enabled": false
+                  }
+                ]
+              }
+            ],
+            "tags": {
+              "Name": "lambda-artifacts"
+            },
+            "tags_all": {
+              "Name": "lambda-artifacts"
+            },
+            "timeouts": null,
+            "versioning": [
+              {
+                "enabled": false,
+                "mfa_delete": false
+              }
+            ],
+            "website": [],
+            "website_domain": null,
+            "website_endpoint": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjM2MDAwMDAwMDAwMDAsInJlYWQiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "create_before_destroy": true
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
