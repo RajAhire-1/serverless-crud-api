@@ -15,6 +15,8 @@ This project demonstrates a fully automated **serverless CRUD API** deployment u
 
 # 📌 Architecture Overview
 
+![API Gateway](img/overr.png)
+
 ```
 
 GitHub → Jenkins → Zip Lambda → Upload to S3 → Terraform Apply → AWS Lambda → API Gateway → DynamoDB
